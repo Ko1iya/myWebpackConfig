@@ -6,6 +6,26 @@ import ReactRefreshTypeScript from "react-refresh-typescript"
 export function buildLoader(env: BuildOptions): ModuleOptions["rules"] {
   const isDev: boolean = env.mode !== "production"
 
+  const babelLoader = {
+    test: /\.tsx?$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        presets: [
+          "@babel/preset-env",
+          "@babel/preset-typescript",
+          [
+            "@babel/preset-react",
+            {
+              runtime: isDev ? "automatic" : "classic",
+            },
+          ],
+        ],
+      },
+    },
+  }
+
   const cssModulesLoader = {
     loader: "css-loader",
     options: {
@@ -69,5 +89,5 @@ export function buildLoader(env: BuildOptions): ModuleOptions["rules"] {
     ],
   }
 
-  return [scssLoader, tsLoader, assetLoader, svgrLoader]
+  return [scssLoader, babelLoader, assetLoader, svgrLoader]
 }
