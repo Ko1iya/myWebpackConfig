@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmyulbiwebpack=self.webpackChunkmyulbiwebpack||[]).push([[716],{716:(e,c,s)=>{s.r(c),s.d(c,{default:()=>l});var u=s(848);s(540);const a={},l=function(){return(0,u.jsx)("div",{className:a.Shop,children:"Shop"})}}}]);
